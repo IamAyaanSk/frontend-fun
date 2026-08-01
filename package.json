@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "imports": {
-    "#src/*": "./src/*.ts"
+    "#src/*": [
+      "./src/*"
+    ]
   },
   "scripts": {
     "dev": "vp dev",
@@ -16,6 +18,8 @@
     "fmt:check": "oxfmt --check"
   },
   "dependencies": {
+    "@hugeicons/core-free-icons": "^4.2.3",
+    "@hugeicons/react": "^1.1.9",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-router": "^1.170.18",
     "@tanstack/react-router-devtools": "^1.167.0",

@@ -4,7 +4,7 @@ import { StrictMode } from "react";
 import "./index.css";
 import { createRoot } from "react-dom/client";
 
-import { routeTree } from "#src/routeTree.gen";
+import { routeTree } from "#src/routeTree.gen.js";
 
 const router = createRouter({
   routeTree,
