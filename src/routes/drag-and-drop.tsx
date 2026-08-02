@@ -1,4 +1,5 @@
 import { DragAnywhere } from "#src/components/drag-and-drop/drag-anywhere.tsx";
+import { Kanban } from "#src/components/drag-and-drop/kanban.tsx";
 import { SimpleDrag } from "#src/components/drag-and-drop/simple-drag.tsx";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -11,6 +12,7 @@ function RouteComponent() {
     <>
       <SimpleDrag />
       <DragAnywhere />
+      <Kanban />
     </>
   );
 }
