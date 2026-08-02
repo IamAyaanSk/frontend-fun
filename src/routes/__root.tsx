@@ -12,7 +12,7 @@ function RootComponent() {
     <React.Fragment>
       <div className="flex h-screen overflow-clip bg-muted">
         <Sidebar />
-        <main className="w-full p-4">
+        <main className="w-full p-4 flex flex-col gap-6">
           <Outlet />
         </main>
       </div>
