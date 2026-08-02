@@ -31,7 +31,7 @@ export const SidebarItem = ({
 
 export const Sidebar = () => {
   return (
-    <aside className="w-64 bg-background p-4 shadow">
+    <aside className="w-64 bg-background p-4">
       <div className="flex flex-col gap-4">
         <h2 className="text-xs text-muted-foreground/80">Microprojects</h2>
         <ul className="flex flex-col gap-1">
