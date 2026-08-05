@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Route as dragAndDropRoute } from "../routes/drag-and-drop";
+import { Route as worldMpaRoute } from "../routes/world-map";
+
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react";
-import { Drag02Icon, More01FreeIcons } from "@hugeicons/core-free-icons";
+import { Drag02Icon, Map, More01FreeIcons } from "@hugeicons/core-free-icons";
 
 export const SidebarItem = ({
   to,
@@ -36,6 +38,7 @@ export const Sidebar = () => {
         <h2 className="text-xs text-muted-foreground/80">Microprojects</h2>
         <ul className="flex flex-col gap-1">
           <SidebarItem to={dragAndDropRoute.to} label="Drag and drop" icon={Drag02Icon} />
+          <SidebarItem to={worldMpaRoute.to} label="World map" icon={Map} />
           <SidebarItem to={"/"} label="More soon" icon={More01FreeIcons} />
         </ul>
       </div>

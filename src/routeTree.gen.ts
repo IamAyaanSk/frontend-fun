@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DragAndDropRouteImport } from './routes/drag-and-drop'
+import { Route as WorldMapRouteImport } from './routes/world-map'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const DragAndDropRoute = DragAndDropRouteImport.update({
   path: '/drag-and-drop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorldMapRoute = WorldMapRouteImport.update({
+  id: '/world-map',
+  path: '/world-map',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/drag-and-drop': typeof DragAndDropRoute
+  '/world-map': typeof WorldMapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/drag-and-drop': typeof DragAndDropRoute
+  '/world-map': typeof WorldMapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/drag-and-drop': typeof DragAndDropRoute
+  '/world-map': typeof WorldMapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/drag-and-drop'
+  fullPaths: '/' | '/drag-and-drop' | '/world-map'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/drag-and-drop'
-  id: '__root__' | '/' | '/drag-and-drop'
+  to: '/' | '/drag-and-drop' | '/world-map'
+  id: '__root__' | '/' | '/drag-and-drop' | '/world-map'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DragAndDropRoute: typeof DragAndDropRoute
+  WorldMapRoute: typeof WorldMapRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DragAndDropRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/world-map': {
+      id: '/world-map'
+      path: '/world-map'
+      fullPath: '/world-map'
+      preLoaderRoute: typeof WorldMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DragAndDropRoute: DragAndDropRoute,
+  WorldMapRoute: WorldMapRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
