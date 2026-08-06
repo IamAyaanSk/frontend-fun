@@ -1,6 +1,6 @@
 import { feature } from "topojson-client";
 import type { Topology } from "topojson-specification";
-import * as d3 from "d3-geo";
+import * as d3Geo from "d3-geo";
 import { useEffect, useRef, useState } from "react";
 import type { FeatureCollection, Geometry } from "geojson";
 import { useDimensions } from "../../hooks/use-dimensions";
@@ -55,9 +55,9 @@ export function WorldMap() {
     features: countries.features.filter((country) => country.properties.ISO_A3 !== "ATA"),
   };
 
-  const projection = d3.geoMercator().fitSize([width, height], filteredCountries);
+  const projection = d3Geo.geoMercator().fitSize([width, height], filteredCountries);
 
-  const pathGenerator = d3.geoPath(projection);
+  const pathGenerator = d3Geo.geoPath(projection);
 
   return (
     <div className="bg-background p-4 rounded-2xl shadow-2xl flex flex-col gap-6">
@@ -79,6 +79,7 @@ export function WorldMap() {
 
             return (
               <path
+                className="transition-all"
                 d={countryD}
                 key={country.properties.NAME}
                 stroke="lightGrey"

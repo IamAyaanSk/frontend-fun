@@ -1,4 +1,4 @@
-import { Sidebar } from "#src/components/sidebar.js";
+import { Sidebar } from "../components/sidebar.js";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
@@ -12,7 +12,7 @@ function RootComponent() {
     <React.Fragment>
       <div className="flex h-screen overflow-clip bg-muted">
         <Sidebar />
-        <main className="w-full p-4 flex flex-col gap-6">
+        <main className="w-full p-4 flex flex-col gap-6 overflow-y-scroll">
           <Outlet />
         </main>
       </div>
