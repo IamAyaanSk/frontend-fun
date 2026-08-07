@@ -8,88 +8,106 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as DragAndDropRouteImport } from './routes/drag-and-drop'
-import { Route as WorldMapRouteImport } from './routes/world-map'
+import { Route as rootRouteImport } from "./routes/__root";
+import { Route as IndexRouteImport } from "./routes/index";
+import { Route as DragAndDropRouteImport } from "./routes/drag-and-drop";
+import { Route as TimelineRouteImport } from "./routes/timeline";
+import { Route as WorldMapRouteImport } from "./routes/world-map";
 
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const DragAndDropRoute = DragAndDropRouteImport.update({
-  id: '/drag-and-drop',
-  path: '/drag-and-drop',
+  id: "/drag-and-drop",
+  path: "/drag-and-drop",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
+const TimelineRoute = TimelineRouteImport.update({
+  id: "/timeline",
+  path: "/timeline",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const WorldMapRoute = WorldMapRouteImport.update({
-  id: '/world-map',
-  path: '/world-map',
+  id: "/world-map",
+  path: "/world-map",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/drag-and-drop': typeof DragAndDropRoute
-  '/world-map': typeof WorldMapRoute
+  "/": typeof IndexRoute;
+  "/drag-and-drop": typeof DragAndDropRoute;
+  "/timeline": typeof TimelineRoute;
+  "/world-map": typeof WorldMapRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/drag-and-drop': typeof DragAndDropRoute
-  '/world-map': typeof WorldMapRoute
+  "/": typeof IndexRoute;
+  "/drag-and-drop": typeof DragAndDropRoute;
+  "/timeline": typeof TimelineRoute;
+  "/world-map": typeof WorldMapRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/drag-and-drop': typeof DragAndDropRoute
-  '/world-map': typeof WorldMapRoute
+  __root__: typeof rootRouteImport;
+  "/": typeof IndexRoute;
+  "/drag-and-drop": typeof DragAndDropRoute;
+  "/timeline": typeof TimelineRoute;
+  "/world-map": typeof WorldMapRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/drag-and-drop' | '/world-map'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/drag-and-drop' | '/world-map'
-  id: '__root__' | '/' | '/drag-and-drop' | '/world-map'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: "/" | "/drag-and-drop" | "/timeline" | "/world-map";
+  fileRoutesByTo: FileRoutesByTo;
+  to: "/" | "/drag-and-drop" | "/timeline" | "/world-map";
+  id: "__root__" | "/" | "/drag-and-drop" | "/timeline" | "/world-map";
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  DragAndDropRoute: typeof DragAndDropRoute
-  WorldMapRoute: typeof WorldMapRoute
+  IndexRoute: typeof IndexRoute;
+  DragAndDropRoute: typeof DragAndDropRoute;
+  TimelineRoute: typeof TimelineRoute;
+  WorldMapRoute: typeof WorldMapRoute;
 }
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/drag-and-drop': {
-      id: '/drag-and-drop'
-      path: '/drag-and-drop'
-      fullPath: '/drag-and-drop'
-      preLoaderRoute: typeof DragAndDropRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/world-map': {
-      id: '/world-map'
-      path: '/world-map'
-      fullPath: '/world-map'
-      preLoaderRoute: typeof WorldMapRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+    "/": {
+      id: "/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/drag-and-drop": {
+      id: "/drag-and-drop";
+      path: "/drag-and-drop";
+      fullPath: "/drag-and-drop";
+      preLoaderRoute: typeof DragAndDropRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/timeline": {
+      id: "/timeline";
+      path: "/timeline";
+      fullPath: "/timeline";
+      preLoaderRoute: typeof TimelineRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/world-map": {
+      id: "/world-map";
+      path: "/world-map";
+      fullPath: "/world-map";
+      preLoaderRoute: typeof WorldMapRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DragAndDropRoute: DragAndDropRoute,
+  TimelineRoute: TimelineRoute,
   WorldMapRoute: WorldMapRoute,
-}
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
